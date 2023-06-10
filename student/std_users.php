@@ -2,7 +2,7 @@
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
     header("Access-Control-Allow-Headers: X-Requested-With");
-    header("Content-type: application/json; charset=utf-8");
+    header("Content-type: application/json");
 
     require_once("std_db.php");
     $user = new Database();
