@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^parent/?$ pa_users.php [NC,L]
+RewriteRule ^parent/([0-9]+)/?$ pa_users.php?id=$1 [NC,L]

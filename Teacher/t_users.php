@@ -4,7 +4,7 @@
     header("Access-Control-Allow-Headers: X-Requested-With");
     header("Content-type: application/json; charset=utf-8");
 
-    require_once("std_db.php");
+    require_once("t_db.php");
     $user = new Database();
 
     $api = $_SERVER["REQUEST_METHOD"];
@@ -21,13 +21,10 @@
     }
 
     if ($api == "POST") {
-        $std_fullname = $user->test_input($_POST['std_fullname']);
-        $std_id = $user->test_input($_POST['std_id']);
-        $std_level = $user->test_input($_POST['std_level']);
-        $std_class = $user->test_input($_POST['std_class']);
-        $std_phone = $user->test_input($_POST['std_phone']);
+        $t_fullname = $user->test_input($_POST['t_fullname']);
+        $t_phone = $user->test_input($_POST['t_phone']);
 
-        if ($user->insert($std_fullname, $std_id, $std_level, $std_class, $std_phone)) {
+        if ($user->insert($t_fullname, $t_phone, $phone)) {
             echo $user->message("User added successfully", false);
         } else {
             echo $user->message("Failed to add an user", true);
@@ -37,14 +34,11 @@
     //update Data
     if ($api == "PUT") {
         parse_str(file_get_contents('php://input'), $post_input);
-        $std_fullname = $user->test_input($post_input['std_fullname']);
-        $std_id = $user->test_input($post_input['std_id']);
-        $std_level = $user->test_input($post_input['std_level']);
-        $std_class = $user->test_input($post_input['std_class']);
-        $std_phone = $user->test_input($post_input['std_phone']);
+        $t_fullname = $user->test_input($post_input['t_fullname']);
+        $t_phone = $user->test_input($post_input['t_phone']);
 
         if ($id != null) {
-            if ($user->update($std_fullname, $std_id, $std_level, $std_class, $std_phone)) {
+            if ($user->update($t_fullname, $t_phone, $id)) {
                 echo $user->message("User Updated successfully", false);
             } else {
                 echo $user->message("Failed to update", true);
